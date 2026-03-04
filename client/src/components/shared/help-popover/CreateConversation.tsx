@@ -48,24 +48,28 @@ const CreateConversation = () => {
     }
 
     return (
-        <div>
-            <h1 className="text-muted-foreground text-xl font-semibold mt-3">Need help? Start a conversation</h1>
-            <p className="my-3 text-primary">
+        <div className="px-4 md:px-0">
+            <h1 className="text-muted-foreground text-[12px] md:text-xl font-semibold mt-3">
+                Need help? Start a conversation
+            </h1>
+            <p className="my-3 text-primary text-[10px] md:text-base">
                 Fill out the form below for starting a conversation with our support.
             </p>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 md:space-y-8">
                     <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Full Name </FormLabel>
+                                <FormLabel className="text-[10px] md:text-base">Full Name</FormLabel>
                                 <FormControl>
                                     <Input
                                         disabled={!!user}
-                                        placeholder="John Doe" {...field} />
+                                        placeholder="John Doe"
+                                        className="h-11 md:h-9 text-sm md:text-sm"
+                                        {...field}
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -76,20 +80,26 @@ const CreateConversation = () => {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel className="text-sm md:text-base">Email</FormLabel>
                                 <FormControl>
                                     <Input
                                         disabled={!!user}
-                                        placeholder="name@example.com" {...field} />
+                                        placeholder="name@example.com"
+                                        className="h-11 md:h-9 text-base md:text-sm"
+                                        {...field}
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button className="w-full"
+                    <Button
+                        className="w-full h-11 md:h-9 text-base md:text-sm"
                         disabled={isPending}
-                        type="submit">Start Conversation</Button>
-
+                        type="submit"
+                    >
+                        Start Conversation
+                    </Button>
                 </form>
             </Form>
         </div>

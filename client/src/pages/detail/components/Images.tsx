@@ -18,7 +18,7 @@ export const ImagesSection = ({ images }: Props) => {
     }
 
     return (
-        <div className="grid grid-rows-[1fr_124px] gap-y-2">
+        <div className="grid grid-rows-[1fr_124px] gap-y-2 mx-5 md:mx-0">
             <Swiper
                 zoom
                 ref={sliderRef}
@@ -32,7 +32,7 @@ export const ImagesSection = ({ images }: Props) => {
                     images.map((image, index) => (
                         <SwiperSlide key={index}>
                             <div className='swiper-zoom-container cursor-zoom-in'>
-                                <img src={image} alt="Rent Image" className="w-full object-contain h-full" />
+                                <img src={image} alt="Rent Image" className="w-full rounded-[8px] object-contain h-full" />
                             </div>
                         </SwiperSlide>
                     ))
@@ -51,7 +51,7 @@ export const ImagesSection = ({ images }: Props) => {
                 {
                     images.map((image, index) => (
                         <SwiperSlide key={index} className='cursor-pointer' onClick={() => handleActiviesSlideChange(index)}>
-                            <img src={image} alt="Rent Image" className="w-full h-full object-contain" />
+                            <img src={image} alt="Rent Image" className="w-full h-full rounded-[8px] object-contain" />
                         </SwiperSlide>
                     ))
                 }

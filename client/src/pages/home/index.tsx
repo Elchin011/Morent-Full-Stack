@@ -28,8 +28,8 @@ const HomePage = () => {
         <div className="container pt-4 lg:pt-8 pb-8 lg:pb-16 flex flex-col gap-y-6 lg:gap-y-8">
             <Hero />
             <Availability />
-            <List heading="Popular Car" isLoading={popularLoading} rents={popularrents} />
-            <List heading="Recommendation Car" isLoading={recommendedLoading} rents={recommendedrents} />
+            <List heading="Popular Car" isLoading={popularLoading} rents={popularrents} mobileVariant="swiper" />
+            <List heading="Recommendation Car" isLoading={recommendedLoading} rents={recommendedrents} mobileVariant="list" />
         </div>
     )
 }

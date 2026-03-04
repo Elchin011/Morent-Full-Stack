@@ -9,7 +9,7 @@ import rentService from "@/services/rent"
 import Spinner from "@/components/shared/Spinner"
 import { Button } from "@/components/ui/button"
 import { paths } from "@/constants/paths"
-import reservationService from "@/services/reservation"
+
 
 
 
@@ -26,11 +26,8 @@ const RentDetailPage = () => {
         queryFn: () => rentService.getById(id!)
     })
 
-    const { data: reservationData } = useQuery({
-        queryKey: [QUERY_KEYS.USER_RESERVATIONS, id],
-        queryFn: () => reservationService.getByRentId(id!)
-    })
-    const reservationId = reservationData?.data?.item?._id
+   
+    
 
     if (isLoading) {
         return (
@@ -58,7 +55,7 @@ const RentDetailPage = () => {
 
 
     return (
-        <div className="container max-w-[1144px]  py-6 lg:py-8 ">
+        <div className="container  py-6 lg:py-8 ">
             <div className="grid lg:grid-cols-[1fr_492px] xl:grid-cols-2 gap-x-8 ">
                 <ImagesSection images={rent.images} />
                 <InformationSection rent={rent} />
@@ -66,9 +63,7 @@ const RentDetailPage = () => {
             <ReviewsSection
                 reviews={rent.reviews}
                 rentId={rent._id.toString()}
-                reservationId={reservationId?.toString()}
             />
-            <List maxCols={3} heading="Recent Cars" />
             <List maxCols={3} heading="Recomendation Cars" isLoading={recommendedLoading} rents={recommendedrents} />
         </div>
     )

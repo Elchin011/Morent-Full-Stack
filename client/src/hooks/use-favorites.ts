@@ -1,22 +1,38 @@
-import { useState } from "react"
+import { create } from "zustand"
+import { persist } from "zustand/middleware"
+import { useSelector } from "react-redux"
+import { selectUserData } from "@/store/features/userSlice"
+
+interface FavoritesStore {
+    favoritesByUser: Record<string, string[]>
+    toggleFavorite: (userId: string, id: string) => void
+}
+
+const useFavoritesStore = create<FavoritesStore>()(
+    persist(
+        (set, get) => ({
+            favoritesByUser: {},
+            toggleFavorite: (userId, id) => {
+                const prev = get().favoritesByUser[userId] || []
+                const updated = prev.includes(id)
+                    ? prev.filter((item) => item !== id)
+                    : [...prev, id]
+                set({ favoritesByUser: { ...get().favoritesByUser, [userId]: updated } })
+            }
+        }),
+        { name: "favorites-storage" }
+    )
+)
 
 export const useFavorites = () => {
-    const [favorites, setFavorites] = useState<string[]>(() => {
-        const stored = localStorage.getItem("favorites")
-        return stored ? JSON.parse(stored) : []
-    })
+    const { user } = useSelector(selectUserData)
+    const userId = user?._id || "guest"
+    const { favoritesByUser, toggleFavorite } = useFavoritesStore()
+    const favorites = favoritesByUser[userId] || []
 
-    const toggleFavorite = (id: string) => {
-        setFavorites((prev) => {
-            const updated = prev.includes(id)
-                ? prev.filter((item) => item !== id)
-                : [...prev, id]
-            localStorage.setItem("favorites", JSON.stringify(updated))
-            return updated
-        })
+    return {
+        favorites,
+        toggleFavorite: (id: string) => toggleFavorite(userId, id),
+        isFavorite: (id: string) => favorites.includes(id)
     }
-
-    const isFavorite = (id: string) => favorites.includes(id)
-
-    return { favorites, toggleFavorite, isFavorite }
 }

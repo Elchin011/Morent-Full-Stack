@@ -28,7 +28,7 @@ export const InformationSection = ({ rent }: Props) => {
 
     const rating = Math.round(reviews.reduce((acc, review) => review.rating + acc, 0) / reviews.length)
     return (
-        <div className="bg-white rounded-[10px] p-4 lg:p-6 relative">
+        <div className="bg-white rounded-[10px] mx-4 md:mx-0 p-4 lg:p-6 relative">
             <h1 className="text-secondary-500 text-2xl lg:text-[32px] !leading-[150%] tracking-[-0.96px] font-bold">{name}</h1>
             <div className="mt-2  flex items-center gap-x-2">
                 <ReviewStar rating={rating} />
@@ -36,31 +36,33 @@ export const InformationSection = ({ rent }: Props) => {
                 <button className="h-fit absolute right-6 top-6" onClick={() => setisLiked(!isliked)}><img src={isliked ? HeartFilldeRed : HeartOutlined} alt="heart" /></button>
             </div>
             <p className="min-h=[160px] my-5 lg:my-8 text-lg lg:text-xl !leading-[200%] tracking-[-0.4px] text-secondary">{description}</p>
-            <div className="flex flex-wrap items-center justify-between gap-4">
-                <div className=" w-[200px] flex justify-between">
-                    <p className="text-secondary-300 text-lg lg:text-xl font-normal leading-[150%] tracking-[-0.4px]">Type Car</p>
-                    <p className="text-secondary text-lg lg:text-xl font-semibold leading-[150%] tracking-[-0.4px]">{category.name}</p>
+            <div className="flex flex-wrap  items-center justify-between md:gap-4">
+                <div className="w-[150px] md:w-[200px] flex justify-between">
+                    <p className="text-secondary-300 text-[12px] lg:text-xl md:text-[20px] font-normal leading-[150%] tracking-[-0.4px]">Type Car</p>
+                    <p className="text-secondary text-[12px] lg:text-xl md:text-[20px] font-semibold leading-[150%] tracking-[-0.4px]">{category.name}</p>
                 </div>
-                <div className=" w-[200px] flex justify-between">
-                    <p className="text-secondary-300 text-lg lg:text-xl font-normal leading-[150%] tracking-[-0.4px]">Capacity</p>
-                    <p className="text-secondary text-lg lg:text-xl font-semibold leading-[150%] tracking-[-0.4px]">{capacity} People</p>
+                <div className=" w-[150px] md:w-[200px] flex justify-between">
+                    <p className="text-secondary-300 text-[12px] lg:text-xl md:text-[20px] font-normal leading-[150%] tracking-[-0.4px]">Capacity</p>
+                    <p className="text-secondary text-[12px] lg:text-xl md:text-[20px] font-semibold leading-[150%] tracking-[-0.4px]">{capacity} People</p>
                 </div>
-                <div className=" w-[200px] flex justify-between">
-                    <p className="text-secondary-300 text-lg lg:text-xl font-normal leading-[150%] tracking-[-0.4px]">Streering</p>
-                    <p className="text-secondary text-lg lg:text-xl font-semibold leading-[150%] tracking-[-0.4px]">{gearBox}</p>
+                <div className="w-[150px] md:w-[200px] flex justify-between">
+                    <p className="text-secondary-300 text-[12px] lg:text-xl md:text-[20px] font-normal leading-[150%] tracking-[-0.4px]">Streering</p>
+                    <p className="text-secondary text-[12px] lg:text-xl md:text-[20px] font-semibold leading-[150%] tracking-[-0.4px]">{gearBox}</p>
                 </div>
-                <div className=" w-[200px] flex justify-between">
-                    <p className="text-secondary-300 text-lg lg:text-xl font-normal leading-[150%] tracking-[-0.4px]">Gasoline</p>
-                    <p className="text-secondary text-lg lg:text-xl font-semibold leading-[150%] tracking-[-0.4px]">{fuel}L</p>
+                <div className="w-[150px] md:w-[200px] flex justify-between">
+                    <p className="text-secondary-300 text-[12px] lg:text-xl md:text-[20px] font-normal leading-[150%] tracking-[-0.4px]">Gasoline</p>
+                    <p className="text-secondary text-[12px] lg:text-xl md:text-[20px] font-semibold leading-[150%] tracking-[-0.4px]">{fuel}L</p>
                 </div>
             </div>
             <div className="flex items-center justify-between mt-12 lg:mt-16">
                 <div>
-                    <p className="text-secondary-500 text-[28px] font-bold">{formatPrice(price - discount)}/ <span className="text-base text-secondary-300"></span>days</p>
-                    <p className="line-through text-secondary-300 text-base font-bold -mt-2">{formatPrice(price)}</p>
+                    <p className="text-secondary-500 text-[20px] md:text-[28px] font-bold">{formatPrice(price - discount)}/ <span className="text-[12px] md:text-base text-secondary-300">days</span></p>
+                    <p className="line-through text-secondary-300 text-[12px] md:text-base font-bold -mt-0">{formatPrice(price)}</p>
                 </div>
 
-                <Button asChild>
+                <Button
+                className="text-base md:text-base py-7 px-9"
+                 asChild>
                     <Link to={paths.PAYMENT(_id)} onClick={
                         () => {
                             if (!user) {

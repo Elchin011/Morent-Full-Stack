@@ -2,8 +2,10 @@ import { DefaultEventsMap, Socket } from "socket.io";
 import Message from "../mongoose/schemas/message";
 import Conversation from "../mongoose/schemas/conversation";
 
+const socketUsers: Record<string, string> = {}
+
 export function socketHandlers(socket: Socket<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>) {
-    const socketUsers: Record<string, string> = {}
+    
     socket.on("register", (userId: string) => onRegister(userId, socket, socketUsers))
 
     socket.on("message", (data: { message: string; to: string, from: string }) => onMessage(data, socket, socketUsers))

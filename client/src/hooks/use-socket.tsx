@@ -25,7 +25,7 @@ export const useSocket = () => {
         return () => {
             newSocket.disconnect()
         }
-    }, [loading]);
+    }, [loading ,user]);
 
     useEffect(() => {
         return () => {

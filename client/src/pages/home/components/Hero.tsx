@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export const Hero = () => {
     return (
-        <div className="grid lg:grid-cols-2 gap-y-4 lg:gap-x-8">
+        <div className="grid lg:grid-cols-2 gap-y-4 lg:gap-x-8 mx-4 md:mx-0">
             <div className=" relative bg-information h-[280px] lg:h-[320px] xl:h-[360px] w-full rounded-[10px]">
                 <img src={HeroCarImage1} alt="Car 1"
                     className="w-full h-full object-contain object-bottom" />
@@ -20,7 +20,7 @@ export const Hero = () => {
                     <Button>Rental Car</Button>
                 </div>
             </div>
-            <div className="relative bg-primary h-[280px] lg:h-[320px] xl:h-[360px] w-ful rounded-[10px]">
+            <div className="hidden md:block relative bg-primary h-[280px] lg:h-[320px] xl:h-[360px] w-full rounded-[10px]">
                 <img src={HeroCarImage2} alt="Car 2"
                     className="w-full h-full object-contain object-bottom" />
                 <div className="absolute left-6 top-6 max-w-[284px]">

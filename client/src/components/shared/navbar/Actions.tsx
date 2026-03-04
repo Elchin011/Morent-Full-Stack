@@ -28,7 +28,7 @@ export const Actions = () => {
         dispatch(logoutAsync())
     }
     return (
-        <div className="flex gap-3 lg:gap-5">
+        <div className=" gap-3 hidden md:flex lg:gap-5">
             <Link
                 to="/favorites"
                 className="rounded-full border border-[#c3d4e966] opacity-80 hover:opacity-100 duration-75 p-2.5"

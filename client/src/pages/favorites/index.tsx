@@ -3,15 +3,18 @@ import { useQuery } from "@tanstack/react-query"
 import rentService from "@/services/rent"
 import { RentCard } from "@/components/shared/rent-card"
 import Spinner from "@/components/shared/Spinner"
+import { useMemo } from "react"
 
 const FavoritesPage = () => {
     const { favorites } = useFavorites()
     const { data, isLoading } = useQuery({
-        queryKey: ["favorites"],
+        queryKey: ["all-rents"],
         queryFn: () => rentService.getAll({})
     })
 
-    const rents = data?.data.items?.filter((rent) => favorites.includes(rent._id))
+    const rents = useMemo(() => {
+        return data?.data.items?.filter((rent) => favorites.includes(rent._id))
+    }, [data, favorites])
 
     if (isLoading) return <div className="flex justify-center mt-28"><Spinner /></div>
 

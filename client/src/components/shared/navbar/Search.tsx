@@ -51,7 +51,7 @@ export const Search = () => {
     }
 
     return (
-        <div className="relative hidden md:block lg:w-[320px] xl:w-[492px]">
+        <div className="relative md:block lg:w-[320px] xl:w-[492px]">
             <img src={SearchIcon} alt="search" className="absolute left-5 top-2.5" />
             <input
                 onChange={(e) => handleSearch(e.target.value.trim())}
@@ -78,9 +78,9 @@ export const Search = () => {
                             max={1000}
                             defaultValue={searchParams.get("maxPrice") || "1000"}
                             onChange={(e) => handleFilter("maxPrice", e.target.value)}
-                            className="w-full"
+                            className="md:w-full "
                         />
-                        <p className="text-xs text-secondary-300 mt-1">${searchParams.get("maxPrice") || "1000"}</p>
+                        <p className=" text-[10px] md:text-xs text-secondary-300 mt-1">${searchParams.get("maxPrice") || "1000"}</p>
                     </div>
 
                     {/* Seat sayı */}
