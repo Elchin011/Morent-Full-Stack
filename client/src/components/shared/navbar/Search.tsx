@@ -4,6 +4,9 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { paths } from "@/constants/paths";
 import { useState, useRef } from "react";
 import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import categoryService from "@/services/category";
+
 
 
 let timeoutId: NodeJS.Timeout;
@@ -50,6 +53,14 @@ export const Search = () => {
         if (!isListingPage) navigate(paths.LIST + `?${searchParams.toString()}`)
     }
 
+    // Transmission hissəsini sil, bunu əlavə et:
+    const { data: categoryData } = useQuery({
+        queryKey: ["categories"],
+        queryFn: () => categoryService.getAll()
+    })
+
+    const categories = categoryData?.data?.items || []
+
     return (
         <div className="relative md:block lg:w-[320px] xl:w-[492px]">
             <img src={SearchIcon} alt="search" className="absolute left-5 top-2.5" />
@@ -66,7 +77,6 @@ export const Search = () => {
                     ref={filterRef}
                     className="absolute top-12 right-0 bg-white border border-[#c3d4e966] rounded-[10px] p-5 w-[280px] z-50 shadow-lg"
                 >
-                    <h3 className="font-semibold text-secondary mb-4">Filter</h3>
                     <h3 className="font-semibold text-secondary mb-4">Filter</h3>
 
                     {/* Qiymət aralığı */}
@@ -100,16 +110,18 @@ export const Search = () => {
                     </div>
 
                     {/* Transmission */}
+                    {/* Transmission əvəzinə Category */}
                     <div className="mb-4">
-                        <label className="text-sm font-medium text-secondary-500 mb-2 block">Transmission</label>
+                        <label className="text-sm font-medium text-secondary-500 mb-2 block">Category</label>
                         <select
-                            onChange={(e) => handleFilter("gearBox", e.target.value)}
-                            value={searchParams.get("gearBox") || ""}
+                            onChange={(e) => handleFilter("category", e.target.value)}
+                            value={searchParams.get("category") || ""}
                             className="w-full border border-[#c3d4e966] rounded-md p-2 text-sm"
                         >
                             <option value="">All</option>
-                            <option value="Manual">Manual</option>
-                            <option value="Automatic">Automatic</option>
+                            {categories.map((cat) => (
+                                <option key={cat._id} value={cat._id}>{cat.name}</option>
+                            ))}
                         </select>
                     </div>
 

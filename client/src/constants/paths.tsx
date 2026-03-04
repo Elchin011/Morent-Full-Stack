@@ -10,7 +10,6 @@ export const paths = {
     PROFILE: "/profile",
     DASHBOARD: {
         MAIN: "/dashboard",
-        OVERVIEW: "/overview",
         RENT: {
             LIST: "/dashboard/rents",
             CREATE: "/dashboard/rents/create",

@@ -33,7 +33,7 @@ export const InformationSection = ({ rent }: Props) => {
             <div className="mt-2  flex items-center gap-x-2">
                 <ReviewStar rating={rating} />
                 <p className="text-secondary text-sm font-medium tracking-[-0.28px]">{reviews.length} Reviewer</p>
-                <button className="h-fit absolute right-6 top-6" onClick={() => setisLiked(!isliked)}><img src={isliked ? HeartFilldeRed : HeartOutlined} alt="heart" /></button>
+                <button className="md:h-fit absolute right-6 top-6 w-4 h-4" onClick={() => setisLiked(!isliked)}><img src={isliked ? HeartFilldeRed : HeartOutlined} alt="heart" /></button>
             </div>
             <p className="min-h=[160px] my-5 lg:my-8 text-lg lg:text-xl !leading-[200%] tracking-[-0.4px] text-secondary">{description}</p>
             <div className="flex flex-wrap  items-center justify-between md:gap-4">

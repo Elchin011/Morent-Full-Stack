@@ -52,7 +52,7 @@ export const Availability = () => {
     }
 
     return (
-        <div className="grid lg:grid-cols-[1fr_60px_1fr] gap-x-5 lg:gap-x-7 xl:gap-x-[44px] items-center mt-8 ml-4 md:ml-0">
+        <div className="grid lg:grid-cols-[1fr_60px_1fr] gap-x-5 lg:gap-x-7 xl:gap-x-[44px] items-center mt-8 mx-4 md:mx-0">
             <Card
                 type="pickup"
                 locationOptions={locationOptions}

@@ -122,7 +122,7 @@ export const Info = () => {
 
     return (
         <Form {...form}  >
-            <form className="flex flex-col lg:gap-y-8 gap-y-6 lg:order-none order-1" onSubmit={form.handleSubmit(onSubmit)}>
+            <form className="flex flex-col mx-4 md:mx-0 lg:gap-y-8 gap-y-6 lg:order-none order-1" onSubmit={form.handleSubmit(onSubmit)}>
                 <BillingStep form={form} />
                 <RentalStep form={form} />
                 <ConfirmationStep pending={isPending} form={form} />

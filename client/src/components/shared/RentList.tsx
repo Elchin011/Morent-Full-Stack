@@ -19,7 +19,7 @@ const List = ({ heading, maxCols = 4, isLoading = false, rents, mobileVariant = 
 
     return (
         <div>
-            <div className="flex items-center md:mx-0 mx-3 justify-between py-2.5">
+            <div className="flex items-center md:mx-0 mx-4 justify-between py-2.5">
                 <h3 className="pl-3 lg:pl-5 text-secondary-300 font-semibold">{heading}</h3>
                 <Button variant={"link"} asChild><Link to="/list">View All</Link></Button>
             </div>
@@ -39,9 +39,9 @@ const List = ({ heading, maxCols = 4, isLoading = false, rents, mobileVariant = 
             </div>
 
             {/* Mobile */}
-            <div className="md:hidden mt-5">
+            <div className="md:hidden mt-5 mx-4 md:mx-0">
                 {mobileVariant === "list" ? (
-                    <div className="flex flex-col gap-4 px-4">
+                    <div className="flex flex-col gap-4">
                         {!isLoading && rents?.map((rent) => (
                             <RentCard key={rent._id} rent={rent} />
                         ))}
